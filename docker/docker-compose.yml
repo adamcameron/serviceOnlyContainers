@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+    nginx:
+        build:
+            context: ./nginx
+        volumes:
+            - appRoot:/usr/share/serviceOnlyContainers
+            - ../var/log:/var/log
+            - ./nginx/root_home:/root
+        ports:
+            - "80:8082"
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        networks:
+          backend:
+            aliases:
+              - service-only-containers.adam-cameron
+        extra_hosts:
+            - "service-only-containers.adam-cameron:127.0.0.1"
+        depends_on:
+              - "php-fpm"
+
+    php-fpm:
+        build:
+            context: ./php-fpm
+        volumes:
+            - appRoot:/usr/share/serviceOnlyContainers
+            - ./php-fpm/root_home:/root
+        stdin_open: true
+        tty: true
+        ports: 
+            - "22:2222"
+        networks:
+            - backend
+
+volumes:
+    appRoot:
+
+networks:
+  backend:
+    driver: "bridge"
+    

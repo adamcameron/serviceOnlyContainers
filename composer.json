@@ -1,0 +1,34 @@
+{
+    "name": "adamcameron/service-only-containers",
+    "description": "See README.md",
+    "license": "GPL-3.0-or-later",
+    "type": "project",
+    "require": {
+        "php": "^8",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-pdo": "*",
+        "ext-libxml": "*",
+        "ext-xml": "*",
+        "ext-mbstring": "*",
+        "ext-tokenize": "*"
+        "ext-dom": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "adamCameron\\serviceOnlyContainers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+			"adamCameron\\serviceOnlyContainers\\test\\": "test/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox",
+    }
+}
