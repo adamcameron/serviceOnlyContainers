@@ -7,9 +7,9 @@ services:
         volumes:
             - appRoot:/usr/share/serviceOnlyContainers
             - ../var/log:/var/log
-            - ./nginx/root_home:/root
+            - ./nginx/root_home/.ash_history:/root/.ash_history
         ports:
-            - "80:8082"
+            - "8082:80"
         stdin_open: true # docker run -i
         tty: true        # docker run -t
         networks:
@@ -26,13 +26,23 @@ services:
             context: ./php-fpm
         volumes:
             - appRoot:/usr/share/serviceOnlyContainers
-            - ./php-fpm/root_home:/root
+            - ./php-fpm/root_home/.bash_history:/root/.bash_history
         stdin_open: true
         tty: true
-        ports: 
-            - "22:2222"
         networks:
             - backend
+            
+    ssh:
+        image:
+            jeroenpeeters/docker-ssh
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /usr/bin/docker:/usr/bin/docker
+        environment:
+            - CONTAINER=serviceonlycontainers_php-fpm_1
+            - AUTH_MECHANISM=noAuth
+        ports:
+            - "2222:22"
 
 volumes:
     appRoot:
