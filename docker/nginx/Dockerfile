@@ -6,6 +6,8 @@ COPY ./fastcgi_params /etc/nginx/fastcgi_params
 COPY ./sites/ /etc/nginx/sites-available
 COPY ./conf.d/ /etc/nginx/conf.d
 RUN mkdir -p /usr/share/serviceOnlyContainers/public
+RUN mkdir -p /usr/share/nginx/html
+RUN rm -rf /usr/share/nginx/html
 RUN ln -s /usr/share/serviceOnlyContainers/public /usr/share/nginx/html
 CMD ["nginx"]
 EXPOSE 80

@@ -25,5 +25,6 @@ RUN chmod -R 600 /root/.ssh/
 WORKDIR  /usr/share
 RUN git clone git@github.com:adamcameron/serviceOnlyContainers.git
 WORKDIR  /usr/share/serviceOnlyContainers
+RUN git pull
 CMD php-fpm
 EXPOSE 9000
