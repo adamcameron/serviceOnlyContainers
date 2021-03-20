@@ -11,7 +11,7 @@
         "ext-libxml": "*",
         "ext-xml": "*",
         "ext-mbstring": "*",
-        "ext-tokenize": "*"
+        "ext-tokenizer": "*",
         "ext-dom": "*",
         "ext-json": "*"
     },
@@ -29,6 +29,6 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit --testdox",
+        "test": "vendor/bin/phpunit --testdox"
     }
 }
