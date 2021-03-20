@@ -1,1 +1,2 @@
-<?php var_export($_SERVER)?>
+<?php
+echo "G'day world";

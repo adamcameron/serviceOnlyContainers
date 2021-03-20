@@ -24,6 +24,10 @@ services:
     php-fpm:
         build:
             context: ./php-fpm
+        environment:
+          - MYSQL_DATABASE=${MYSQL_DATABASE}
+          - MYSQL_USER=${MYSQL_USER}
+          - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         volumes:
             - type: bind
               source: ./php-fpm/root_home/.bash_history
